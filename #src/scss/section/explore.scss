@@ -1,0 +1,129 @@
+.explore {
+	background-color: #dde6e8;
+	position: relative;
+	margin-top: -40px;
+	z-index: 2;
+	padding: 146px 0 50px 0;
+	&__wrapper {
+		
+	}
+	&__title {
+		color: #000000;
+		font-size: 42px;
+		font-weight: 700;
+		text-align: center;
+		text-transform: uppercase;
+		margin-bottom: 43px;
+		@media (max-width: 1000px) {
+			font-size: 36px;
+			margin-bottom: 20px;
+		}
+		@media (max-width: 600px) {
+			font-size: 26px;
+			margin-bottom: 20px;
+		}
+	}
+
+	&__descr {
+		color: #000000;
+		font-size: 16px;
+		font-weight: 400;
+		text-align: center;
+		margin-bottom: 77px;
+		@media (max-width: 1000px) {
+			margin-bottom: 30px;
+		}
+		@media (max-width: 600px) {
+			font-size: 14px;
+			margin-bottom: 20px;
+		}
+	}
+
+	&__products {
+		display: flex;
+		flex-wrap: wrap;
+		
+		margin: 0 -10px 0 -10px;
+	}
+
+	&:after, &:before{
+		content: '';
+		display: block;
+		position: absolute;
+		width: 0;
+		height: 0;
+		top: 0;
+		left: 0;
+		transform: translateY(-100%);
+		border-top: var(--heightIncline) solid  transparent;
+		border-right: var(--widthWindow) solid #dde6e8;
+	}
+	&:before{
+		top: auto;
+		bottom: 0;
+		transform: translateY(100%);
+		border-top: var(--heightIncline) solid #dde6e8 ;
+		border-left: var(--widthWindow) solid transparent ;
+	}
+	@media (max-width: 1000px) {
+		padding: 80px 0 50px 0;
+	}
+	@media (max-width: 900px) {
+		padding: 50px 0 10px 0;
+	}
+}
+
+.products {
+
+	&__product {
+		flex: 0 1 calc(33.333% - 20px);
+		// max-width: calc(31.6% );
+		margin: 0px 10px 20px 10px;
+		padding: 12px 12px 17px 12px;
+		background-color: #ffffff;
+		@media (max-width: 800px) {
+			flex: 0 1 calc(50% - 20px);
+		}
+		@media (max-width: 600px) {
+			flex: 0 1 calc(100% - 20px);
+		}
+	}
+}
+.product {
+
+	&__img {
+		background-color: #dde6e8;
+		display: block;
+		margin-bottom: 21px;
+		padding: 50%;
+		transition: all .3s ease;
+		@media (min-width: 1200px) {
+		  &:hover{
+			  transform: scale(1.02);
+		  }
+		}
+	}
+
+	&__text {
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+.text {
+
+	&__name {
+		line-height: 36px;
+		color: #000000;
+		font-size: 18px;
+		font-weight: 400;
+	}
+
+	&__price {
+		color: #000000;
+		font-size: 18px;
+		font-weight: 400;
+		line-height: 36px;
+	}
+}
+

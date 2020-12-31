@@ -1,0 +1,14 @@
+:root {
+	--heightCard: 256px;
+	--widthWindow: auto;
+	--heightIncline: 180px;
+	@media (max-width: 1200px) {
+		--heightIncline: 120px;
+	}
+	@media (max-width: 900px) {
+		--heightIncline: 60px;
+	}
+	@media (max-width: 480px) {
+		--heightIncline: 30px;
+	}
+}
