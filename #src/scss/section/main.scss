@@ -10,6 +10,21 @@
 		padding-top: 20px;
 	}
 	&__wrapper {
+		position: relative;
+		&_loading{
+			&:after{
+				content: '';
+				position: absolute;
+				display: block;
+				width: 100%;
+				height: 100%;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				background: url('../img/loading.gif') 50% 70px / 30% no-repeat;
+			}
+		}
+		
 
 	}
 
@@ -17,6 +32,9 @@
 		margin-bottom: 70px;
 		position: relative;
 		z-index: 4;
+		display: inline-flex;
+		visibility: hidden;
+		
 	}
 
 	&__cards {
@@ -82,6 +100,7 @@
 	&__slide {
 		display: flex;
 		justify-content: flex-start;
+		flex: 0 0 66%;
 		
 		@media (max-width: 992px) {
 			flex-wrap: wrap;
@@ -179,8 +198,8 @@
 	&__card {
 		display: flex;
 		margin: 0 20px 40px 20px;
+		flex: 0 1 40%;
 		flex: 1 0 calc(50% - 40px);
-		max-width: calc(50% - 40px);
 		overflow: hidden;
 		@media (max-width: 1530px) {
 			max-width: 100%;
@@ -221,17 +240,9 @@
 		&_img {
 			// background-color: #f8de01;
 			overflow: visible;
-			&:after{
-				content: '';
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				left: 50%;
-				top: 50%;
-				transform: translate(-50%, -50%);
-				background-color: #f8de01;
-				z-index: 1;
-			}
+			background-color:#f8de01;
+			background-position: right;
+			
 			img {
 				left: auto;
 				right: -2px;
@@ -261,9 +272,7 @@
 				}
 			}
 			&_img {
-				&:after{
-					background-color: #000;
-				}
+				background-color: #000;
 			}
 		}
 		.descr {
@@ -348,14 +357,14 @@
 		font-weight: 700;
 		margin-bottom: 36px;
 		position: relative;
-		width: 120%;
+		width: 100%;
 		z-index: 3;
 		@media (max-width: 1560px) {
 		  width: 100%;
 		}
 		@media (max-width: 700px) {
 			z-index: 5;
-			width: 200%;
+			width: 150%;
 		 }
 		 @media (max-width: 480px) {
 			font-size: 20px;
@@ -379,7 +388,7 @@
 			z-index: 5;
 		 }
 		 @media (max-width: 700px) {
-			width: 200%;
+			width: 170%;
 		 }
 		 @media (max-width: 480px) {
 			font-size: 14px;
@@ -470,6 +479,8 @@
 
 .tns-horizontal.tns-subpixel > .tns-item {
 	display: inline-flex ;
+	visibility: visible;
+	
 }
 .tns-nav{
 	text-align: center;
@@ -489,6 +500,10 @@
 		top: -40px;
 
 	}
+}
+.tns-item {
+	flex: 1 1 auto;
+	
 }
 button.tns-nav-active{
 	border: 1px solid #9cf801;

@@ -1,8 +1,10 @@
 window.addEventListener('DOMContentLoaded', function()  {
 
 	var 	mainBody = document.querySelector('body'),
+			mainSection = document.querySelector('.main__wrapper'),
 			scriptIE = document.createElement('script'),
 			fetchPolyfill = document.createElement('script'),
+			tinySlider = document.createElement('script'),
 			scriptMain = document.createElement('script'),
 			// footer = document.querySelector('.footer'),
 			// footerMbile = document.querySelector('.footer-mobile'),
@@ -10,23 +12,37 @@ window.addEventListener('DOMContentLoaded', function()  {
 			is_ie = ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
 	
 	scriptIE.setAttribute('src', 'js/scriptIE.min.js');
-	
 	scriptMain.setAttribute('src', 'js/script.min.js');
 	fetchPolyfill.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/fetch/0.8.0/fetch.min.js');
-	// var isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(navigator.userAgent);
+	tinySlider.setAttribute('src', 'js/tiny-slider.js');
 
-	// if(isMobile) {
-	// 	footerMbile.style.display = 'block';
-	// 	footer.style.display = 'none';
-	// }else{
-	// 	footerMbile.style.display = 'none';
-	// 	footer.style.display = 'block';
-	// }
+	var isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(navigator.userAgent);
+
+	if(isMobile) {
+		mainSection.classList.add('main__wrapper_loading');
+	}
 
 	if(is_ie){
 		mainBody.appendChild(fetchPolyfill);
-		mainBody.appendChild(scriptIE);
+		fetchPolyfill.onload = function() {
+			mainBody.appendChild(scriptIE);
+		};
 	}else{
-		mainBody.appendChild(scriptMain);
+		
+		if(isMobile) {
+			setTimeout(function () {
+				mainBody.appendChild(tinySlider);
+				tinySlider.onload = function() {
+					mainBody.appendChild(scriptMain);
+					mainSection.classList.remove('main__wrapper_loading');
+				};
+			}, 1500);		
+		}else{
+			mainBody.appendChild(tinySlider);
+				tinySlider.onload = function() {
+					mainBody.appendChild(scriptMain);
+				};
+		}
+		
 	}
 });

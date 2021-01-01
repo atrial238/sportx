@@ -13,7 +13,7 @@
 	&__logo {
 		&-wrapper {
 			position: relative;
-			margin-left: 52px;
+			margin-left: 62px;
 			span {
 				&:first-child{
 					color: #ffffff;
@@ -53,9 +53,10 @@
 				bottom: 2px;
 				left: 0;
 			}
-			@media (max-width: 1270px) {
-				margin-left: 20px;
+			@media (max-width: 480px) {
+				margin-left: 32px;
 			}
+			
 		}
 	}
 	&__menu {
@@ -69,7 +70,7 @@
 			width: 320px;
 			height: 100vh;
 			position: fixed;
-			left: -100%;
+			left: -110%;
 			top: 0;
 			background-color: #ffae00;
 			z-index: 5;

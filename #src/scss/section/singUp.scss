@@ -125,7 +125,7 @@
 		background-color: #212121;
 		padding: 16px 20px 16px 20px;
 		margin-right: 5px;
-		flex: 1 0 70%;
+		flex: 0 1 70%;
 		
 		input {
 			transform: skewX(30deg);
@@ -141,7 +141,7 @@
 			}
 		}
 		@media (max-width: 600px) {
-			padding: 5px 13px 5px 13px;
+			padding: 15px 13px 15px 13px;
 
 		}
 		
@@ -203,7 +203,7 @@
 .statusPost {
 	position: absolute;
 	left: 0px;
-	bottom: -16px;
-	transform: skewX(30deg)
+	bottom: 0px;
+	transform: translateY(110%) skewX(30deg)
 }
 

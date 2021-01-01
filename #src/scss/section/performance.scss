@@ -8,12 +8,14 @@
 		}
 	
 		&__slider {
+			visibility: visible;
 		}
 		
 	}
 	.slider {
 
 		&__slide {
+			flex: 0 0 100%;
 			@media (max-width: 1200px) {
 				display: block;
 			}
@@ -34,7 +36,7 @@
 	
 		&__img {
 			img {
-				transform:translateX(-200px) scale(1.8);
+				transform:translate(-140px, -40px) scale(1.6);
 				@media (max-width: 1410px) {
 					transform:translateX(-100px) scale(1.4);
 				}
@@ -86,11 +88,11 @@
 	@media (max-width: 1200px) {
 		padding: 130px 0 0px 0;
 	}
-	@media (max-width: 900px) {
-		padding: 50px 0 0px 0;
+	@media (max-width: 800px) {
+		padding: 60px 0 15px 0;
 	}
 	@media (max-width:480px) {
-		padding: 30px 0 0px 0;
+		padding: 20px 0 10px 0;
 	}
 }
 .performans.main:after{

@@ -6,9 +6,10 @@
 		display: flex;
 		justify-content: space-between;
 		padding-bottom: 106px;
-		flex-wrap: wrap;
+		
 		@media (max-width: 1200px) {
 			padding-bottom: 20px;
+			flex-wrap: wrap;
 		}
 		
 	}
@@ -22,6 +23,7 @@
 			@media (max-width: 1200px) {
 			text-align: center;
 			margin-bottom: 20px;
+			padding-right: 0px;
 			}
 		}
 
@@ -78,6 +80,9 @@
 			span{
 				&:first-child{
 					font-size: 42px;
+					@media (max-width: 1270px) {
+						font-size: 42px;
+					}
 					@media (max-width: 480px) {
 						font-size: 36px;
 					}
@@ -117,7 +122,7 @@
 		}
 		@media (max-width: 480px) {
 			font-size: 16px;
-			width: 120%;
+			
 		}
 	}
 }
@@ -159,7 +164,7 @@
 				transition: all .3s ease;
 			}
 			&:before{
-				transform: translate(calc(50% + 3px), -50%) rotate(-45deg);
+				transform: translate(69%, -50%) rotate(-45deg);
 			}
 			&_active{
 				color: #fcff00;
@@ -170,7 +175,7 @@
 				}
 				&:before{
 					background-color: #fcff00;
-					transform: translate(calc(50% + 3px), -50%) rotate(45deg);
+					transform: translate(69%, -50%) rotate(45deg);
 				}
 			}
 		}

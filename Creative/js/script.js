@@ -246,6 +246,30 @@ function incline () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 function dynamicAdapt (numbr) {
+	 (function (arr) {
+		arr.forEach(function (item) {
+		  if (item.hasOwnProperty('after')) {
+			 return;
+		  }
+		  Object.defineProperty(item, 'after', {
+			 configurable: true,
+			 enumerable: true,
+			 writable: true,
+			 value: function after() {
+				var argArr = Array.prototype.slice.call(arguments),
+				  docFrag = document.createDocumentFragment();
+	 
+				argArr.forEach(function (argItem) {
+				  var isNode = argItem instanceof Node;
+				  docFrag.appendChild(isNode ? argItem : document.createTextNode(String(argItem)));
+				});
+	 
+				this.parentNode.insertBefore(docFrag, this.nextSibling);
+			 }
+		  });
+		});
+	 })([Element.prototype, CharacterData.prototype, DocumentType.prototype]);
+
 
 	const	setArr = document.querySelector(`[data-move${numbr}]`).dataset[`move${numbr}`].split(', '),
 			moveableElem = document.querySelector(`[data-move${numbr}]`),
@@ -271,7 +295,7 @@ function dynamicAdapt (numbr) {
 			}
 			
 		}else if(anchorSibling){
-			
+		
 			anchorSibling.after(moveableElem); 
 
 		}else if(anchorParent) {
@@ -283,6 +307,8 @@ function dynamicAdapt (numbr) {
 
 		window.addEventListener('resize', () => move());
 		move ();
+
+	
 }
 /* harmony default export */ __webpack_exports__["default"] = (dynamicAdapt);
 
@@ -446,28 +472,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "menu", function() { return menu; });
 const menuOverlay = document.querySelector('.menu__overlay'),
 		menu = document.querySelector('.header__menu');
-
+	
 function header (){
 
 	const menuClose = document.querySelector('.header__burger-close'),
-	menuActive = document.querySelector('.header__burger')	;
-
-
+			menuActive = document.querySelector('.header__burger'),
+			widthScroll =  window.innerWidth - document.documentElement.clientWidth;
+			
 	menuClose.addEventListener('click', () => {
 		menuOverlay.classList.remove('menu__overlay_active');
 		menu.classList.remove('header__menu_active');
 		document.body.classList.remove('_lock');
+		document.body.style.paddingRight ='';
 	});
 
 	menuActive.addEventListener('click', () => {
 		menuOverlay.classList.add('menu__overlay_active');
 		menu.classList.add('header__menu_active');
 		document.body.classList.add('_lock');
+		document.body.style.paddingRight = widthScroll  + 'px';
 	});
 
 	window.addEventListener('resize', () => {
 		menuOverlay.classList.remove('menu__overlay_active');
 		menu.classList.remove('header__menu_active');
+		document.body.classList.remove('_lock');
+		document.body.style.paddingRight ='';
 	});
 }
 
@@ -753,13 +783,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// import tabs from './files/tabs';
 
-// import modals from './files/modal';
-// import catalog from './files/catalog';
-// import align from './files/alignTitle';
 
-// import maskForNumberPhone from './files/maskForNumberPhone';
+
 
 
 
@@ -773,31 +799,9 @@ __webpack_require__.r(__webpack_exports__);
 	Object(_files_cardIncline__WEBPACK_IMPORTED_MODULE_7__["default"])();
 	Object(_files_slider__WEBPACK_IMPORTED_MODULE_3__["default"])();
 	Object(_files_accordion__WEBPACK_IMPORTED_MODULE_6__["default"])('.item__title', '.item__title_active', '.item__link', '.item__link_active','.footer__column_list');
-	// slider();
-	// modals('.btn-consultation', '#consultation', '.overlay', '#consultation .modal__close', '.pageup');
-	// modals('.btn-order', '#order', '.overlay', '#order .modal__close', '.pageup');
-	// catalog();
-	// align('.catalog-item__subtitle');
 	Object(_files_form__WEBPACK_IMPORTED_MODULE_4__["default"])();
-	// maskForNumberPhone('[name = phone]');
 	Object(_files_scrolling__WEBPACK_IMPORTED_MODULE_5__["smoothScrolling"])('.link');
-	// footer();
-
-
-	// =======================================For Google Maps======================================================
 	
-	
-	// var isMobile = /Mobile|webOS|BlackBerry|IEMobile|MeeGo|mini|Fennec|Windows Phone|Android|iP(ad|od|hone)/i.test(navigator.userAgent),
-		// scriptMap = document.createElement('script'),
-		// mainBody = document.querySelector('body');
-	
-	// if(!isMobile){
-	// 	scriptMap.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD3QtL2IP05dPUR8aqsAIcooTjiyO8ay3w';
-	// 	mainBody.appendChild(scriptMap);
-	// 	scriptMap.onload = function(){
-	// 		initMap();
-	// 	};	
-	// }
 
 /***/ })
 
